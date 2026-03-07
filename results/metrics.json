@@ -1,0 +1,47 @@
+[
+  {
+    "model_name": "Logistic Regression",
+    "roc_auc": 0.8419153168513783,
+    "pr_auc": 0.6350842953071699,
+    "confusion_matrix": [
+      [
+        738,
+        297
+      ],
+      [
+        77,
+        297
+      ]
+    ]
+  },
+  {
+    "model_name": "Random Forest",
+    "roc_auc": 0.8251543568679119,
+    "pr_auc": 0.621079308506295,
+    "confusion_matrix": [
+      [
+        920,
+        115
+      ],
+      [
+        194,
+        180
+      ]
+    ]
+  },
+  {
+    "model_name": "XGBoost",
+    "roc_auc": 0.8377315353018677,
+    "pr_auc": 0.6466523970389454,
+    "confusion_matrix": [
+      [
+        934,
+        101
+      ],
+      [
+        186,
+        188
+      ]
+    ]
+  }
+]
