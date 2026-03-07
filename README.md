@@ -145,6 +145,7 @@ Both EDA and predictive modeling consistently highlighted the importance of:
 - contract type
 - monthly charges
 - support/service adoption
+
 From a business perspective, the results suggest that retention strategies may be especially valuable for:
 - short-tenure customers
 - customers on month-to-month contracts
