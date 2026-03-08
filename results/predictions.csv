@@ -1,0 +1,6 @@
+gender,SeniorCitizen,Partner,Dependents,tenure,PhoneService,MultipleLines,InternetService,OnlineSecurity,OnlineBackup,DeviceProtection,TechSupport,StreamingTV,StreamingMovies,Contract,PaperlessBilling,PaymentMethod,MonthlyCharges,TotalCharges,tenure_group,avg_monthly_spend,services_count,churn_probability,predicted_churn,predicted_churn_label
+Female,0,Yes,No,1,No,No phone service,DSL,No,Yes,No,No,No,No,Month-to-month,Yes,Electronic check,29.85,29.85,0-12,29.85,1,0.8112604875939493,1,Yes
+Male,0,No,No,34,Yes,No,Fiber optic,Yes,No,Yes,No,Yes,Yes,One year,No,Mailed check,89.1,3021.45,24-48,88.86617647058823,4,0.39498597943044456,0,No
+Female,1,Yes,No,60,Yes,Yes,Fiber optic,Yes,Yes,Yes,Yes,Yes,Yes,Two year,No,Bank transfer (automatic),110.25,6615.0,48+,110.25,6,0.15544195691322227,0,No
+Male,0,No,Yes,5,Yes,No,DSL,No,No,No,No,No,No,Month-to-month,Yes,Electronic check,55.3,276.5,0-12,55.3,0,0.6368157399365189,1,Yes
+Female,0,Yes,Yes,48,Yes,Yes,DSL,Yes,Yes,Yes,Yes,No,No,Two year,No,Credit card (automatic),64.9,3115.2,24-48,64.89999999999999,4,0.023922266390036813,0,No

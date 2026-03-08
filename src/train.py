@@ -5,6 +5,7 @@ import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
 
+from utils import clean_telco, add_features
 from sklearn.model_selection import train_test_split
 from sklearn.compose import ColumnTransformer
 from sklearn.pipeline import Pipeline
@@ -31,58 +32,6 @@ def load_data(path: str) -> pd.DataFrame:
     if not os.path.exists(path):
         raise FileNotFoundError(f"Dataset not found at {path}")
     df = pd.read_csv(path)
-    return df
-
-
-def clean_telco(df: pd.DataFrame) -> pd.DataFrame:
-    df = df.copy()
-
-    # Convert TotalCharges to numeric
-    df["TotalCharges"] = pd.to_numeric(df["TotalCharges"], errors="coerce")
-
-    # Drop customer ID
-    if "customerID" in df.columns:
-        df = df.drop(columns=["customerID"])
-
-    # Convert target to 0/1
-    df["Churn"] = df["Churn"].map({"No": 0, "Yes": 1}).astype(int)
-
-    return df
-
-
-def add_features(df: pd.DataFrame) -> pd.DataFrame:
-    df = df.copy()
-
-    # tenure_group
-    bins = [-1, 12, 24, 48, np.inf]
-    labels = ["0-12", "12-24", "24-48", "48+"]
-    df["tenure_group"] = pd.cut(df["tenure"], bins=bins, labels=labels)
-
-    # avg_monthly_spend
-    df["avg_monthly_spend"] = df["TotalCharges"] / df["tenure"].replace(0, np.nan)
-
-    # Count service subscriptions
-    service_cols = [
-        "OnlineSecurity",
-        "OnlineBackup",
-        "DeviceProtection",
-        "TechSupport",
-        "StreamingTV",
-        "StreamingMovies"
-    ]
-
-    available_service_cols = [c for c in service_cols if c in df.columns]
-
-    def yes_to_one(x):
-        return 1 if x == "Yes" else 0
-
-    for c in available_service_cols:
-        df[c + "_01"] = df[c].map(yes_to_one)
-
-    if available_service_cols:
-        df["services_count"] = df[[c + "_01" for c in available_service_cols]].sum(axis=1)
-        df = df.drop(columns=[c + "_01" for c in available_service_cols])
-
     return df
 
 

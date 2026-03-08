@@ -27,6 +27,7 @@ The dataset includes:
    - XGBoost
 6. Evaluation with ROC-AUC, PR-AUC, confusion matrix, and classification report
 7. Model interpretation and feature importance analysis
+8. Model inference on new customer records
 
 ## Exploratory Data Analysis (EDA)
 Initial data exploration showed several clear churn patterns:
@@ -62,6 +63,12 @@ Three models were trained and compared for churn prediction:
 - **Random Forest** performed reasonably well, but was slightly weaker than Logistic Regression and XGBoost on the main ranking metrics.
 
 Overall, all three models achieved **ROC-AUC values above 0.82**, suggesting that churn can be predicted effectively from customer subscription, billing, and service usage features.
+
+## Model Inference on New Data
+
+After training the churn prediction model, the repository also provides a script for running predictions on new customer records.
+
+The `predict.py` script loads a trained model and generates churn probability predictions for new input data.
 
 ## Business Interpretation
 The modeling results were broadly consistent with the EDA findings.
@@ -109,10 +116,14 @@ Random Forest feature importance showed that churn prediction was strongly influ
 ```text
 customer-churn-analysis/
 ├── data/
+│   ├── WA_Fn-UseC_-Telco-Customer-Churn.csv
+│   └── sample_new_customers.csv
 ├── notebooks/
 │   └── churn_eda.ipynb
 ├── src/
-│   └── train.py
+│   ├── train.py
+│   ├── predict.py
+│   └── utils.py
 ├── models/
 ├── results/
 ├── README.md
@@ -130,12 +141,17 @@ pip install -r requirements.txt
 ```bash
 python src/train.py
 ```
+4. Run the test script:
+```bash
+python src/predict.py
+```
 
 ## Outputs
 - Trained models saved under `models/`
 - Evaluation metrics saved under `results/metrics.json`
 - ROC and PR curves saved under `results/`
 - Feature importance saved under `results/rf_feature_importance.csv`
+- Churn predictions for new customers saved under `results/predictions.csv`
 
 ## Conclusion
 This project shows that telecom customer churn can be modeled effectively using customer subscription, billing, and service-related data.
